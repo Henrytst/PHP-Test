@@ -1,0 +1,52 @@
+A)Montar um unico select para trazer os seguintes campos: o código da loja do produto, a descrição da loja, código do produto, a descrição do produto, o preço do produto, a quantidade em estoque do produto. Considere que o código da loja para esta consulta seja igual a 1.
+
+SELECT 
+    p.loj_prod AS codigo_loja,
+    l.desc_loj AS descricao_loja,
+    p.cod_prod AS codigo_produto,
+    p.desc_prod AS descricao_produto,
+    p.preco_prod AS preco_produto,
+    e.qtd_prod AS quantidade_estoque
+FROM 
+    produtos p
+LEFT JOIN 
+    lojas l ON p.loj_prod = l.loj_prod
+LEFT JOIN 
+    estoque e ON p.cod_prod = e.cod_prod AND p.loj_prod = e.loj_prod
+WHERE 
+    p.loj_prod = 1;
+
+
+B)Observe a estrutura da tabela de estoque e da tabela de produtos, monte um select para trazer todos os produtos que existem na tabela de produtos que não existem na tabela de estoque.
+
+SELECT 
+    p.cod_prod AS codigo_produto,
+    p.loj_prod AS codigo_loja,
+    p.desc_prod AS descricao_produto,
+    p.dt_inclu_prod AS data_inclusao,
+    p.preco_prod AS preco_produto
+FROM 
+    produtos p
+LEFT JOIN 
+    estoque e ON p.cod_prod = e.cod_prod AND p.loj_prod = e.loj_prod
+WHERE 
+    e.cod_prod IS NULL;
+
+
+C)Observe a estrutura da tabela de estoque e da tabela de produtos, monte um select para trazer todos os produtos que existem na tabela de estoque que não existem na tabela de produtos.
+
+SELECT 
+    e.cod_prod AS codigo_produto,
+    e.loj_prod AS codigo_loja,
+    e.qtd_prod AS quantidade_estoque
+FROM 
+    estoque e
+LEFT JOIN 
+    produtos p ON e.cod_prod = p.cod_prod AND e.loj_prod = p.loj_prod
+WHERE 
+    p.cod_prod IS NULL;
+
+
+
+
+

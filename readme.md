@@ -46,7 +46,7 @@ Este projeto é uma aplicação web para a gestão de empresas e funcionários, 
 
 1. Clone este repositório:
    ```bash
-   git clone https://github.com/seu-usuario/nome-do-repositorio.git
+   git clone https://github.com/Henrytst/PHP-Test.git
    ```
 
 2. Configure o banco de dados:
